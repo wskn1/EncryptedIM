@@ -1,4 +1,4 @@
-package com.github.wskn1.encryptedim.client.tools;
+package com.wangshengkai.encryptedim.client.tools;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

@@ -1,4 +1,4 @@
-package com.github.wskn1.encryptedim.client.tools;
+package com.wangshengkai.encryptedim.client.tools;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -33,6 +33,14 @@ public class CipherHelper {
 
     public String AES_decrypt(String str) throws UnsupportedEncodingException, IllegalBlockSizeException, InvalidKeyException, BadPaddingException, NoSuchAlgorithmException, NoSuchPaddingException {
         return new String(AESUtil.decryptAES(ParseSystemUtil.parseHexStr2Byte(str) , AESUtil.strKey2SecretKey(keys.getAES_Key())));
+    }
+
+    public String sign_with_RSA_private(String str) throws Exception {
+        return RSAUtil.sign(str.getBytes("utf-8") , keys.getRSA_Private_Key());
+    }
+
+    public boolean verify_with_RSA_public(String str , String sign) throws Exception {
+        return RSAUtil.verify(str.getBytes("utf-8") , keys.getRSA_Public_Key() , sign);
     }
 
     public void genNewKey(String RSASeed , String AESSeed) throws Exception {
